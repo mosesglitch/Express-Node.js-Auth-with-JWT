@@ -1,0 +1,248 @@
+Backend technologies include various types of servers and supporting infrastructures such as programming languages, frameworks, and other hardware  
+
+Node.js is the server-side component of JavaScript. 
+
+ The require statement can be called from anywhere in the app code, is bound dynamically, and is synchronous, whereas the import statement can only be called at the beginning of a file, is bound statically, and is asynchronous.  
+
+Client-side JavaScript is used to process front-end user interface elements, and server-side JavaScript is used to enable access to different kinds of servers and web applications. 
+
+With server-side JavaScript, Node.js applications process and route web service requests from the client. 
+
+To make a function or a value available to Node.js applications that import your module, add a property to the implicit exports object. 
+
+Core modules include bare minimum functionality, local modules are those that you create for your application, and the Node.js community creates third-partymodules 
+
+A local install means only the application within the directory of the installed can access the package, whereas a global install means that any application on the machine can access the package 
+
+
+
+Anonymous Function	A function that is not named. An anonymous function is often passed into another function as a parameter.
+Application Server	Transforms data into dynamic content and runs the business logic, which is the data storage and transfer rules.
+Asynchronous	A process that runs independently of other processes. 
+Callback Function	A function passed into another function as a parameter, which is then invoked inside the outer function to complete an action. Instead of blocking on asynchronous I/O operations, callback functions are used to handle results when the operations complete. 
+Database Server	A server dedicated to providing database services. 
+Dependencies	Code, usually in the form of libraries and packages, that are called from other modules and reused in a program. 
+Event-Driven	Where the flow of a program is determined by particular events such as user input. 
+Express.js	A highly configurable web framework for building applications on Node.js. 
+Framework	Generates code that cannot be altered to perform common tasks. Examples include Django, Ruby on Rails, and Express.js. 
+HTTP Server	A type of software-based server that understands URLs and hypertext transfer protocol. 
+Load	Refers to the number of concurrent users, the number of transactions, and the amount of data transferred back and forth between the clients and servers. 
+Module	Files containing related, encapsulated JavaScript code that serve a specific purpose. 
+Multi-Threaded	Where multiple tasks are executed simultaneously. 
+Node.js	A JavaScript runtime environment that runs on Google Chrome’s V8 engine. 
+Non-Blocking	Failure of a given thread does not cause failure in another, and the execution of a task is not blocked until execution of another task is completed. 
+Npm	Stands for node package manager. It is the default package manager for the Node.js runtime environment. 
+Package	A directory with one or more modules bundled together. 
+Package.json	Contains metadata information about the project, including dependencies and scripts. 
+Payload	The data transmitted between client and server. 
+Runtime Environment	Behaves similarly to a mini operating system that provides the resources necessary for an application to run. It is the infrastructure that supports the execution of a codebase. It is the hardware and software environment in which an application gets executed. Node.js is an example of a backend runtime environment. 
+Scalability	The application’s ability to dynamically handle the load as is or shrinks without it affecting the application’s performance. 
+Server.js	A file that contains the code that handles server creation. 
+Single-Threaded	Where only one command is processed at a given point of time. 
+Web Server	Ensures client requests are responded to, often using HTTP. 
+Web Service	A type of web API that communicates using HTTP requests. It is the web service in the programming interface that sends and receives requests using HTTP among web servers and the client. 
+
+
+
+
+Package/Method	Description	Code Example
+http/createServer	http package is used for establishing remote connections to a server or to create a server which listens to client.
+createServer - Takes a requestListener, a function which takes request and response parameters, where request is the handle to the request from the client and response is the handle to be sent to the client.
+
+
+const http = require('http');
+const requestListener = function(req, res) {
+  res.writeHead(200);
+  res.end('Hello, World!');
+}
+const port = 8080;
+const server = http.createServer(requestListener);
+    console.log('server listening on port: '+ port); 
+Copied!
+new Date()	new Date() method returns the current date as an object. You can invoke methods on the date object to format it or change the timezone.	
+
+module.exports.getDate = function getDate() {
+    let aestTime = new Date().toLocaleString("en-US", {timeZone: "Australia/Brisbane"});
+    return aestTime;
+}
+Copied!
+import()	The import statement is used to import modules that some other module has exported. A file that includes reusable code is known as a module.	
+
+// addTwoNos.mjs
+function addTwo(num) {
+  return num + 4;
+}
+export { addTwo };
+// app.js
+import { addTwoNos } from './addTwoNos.mjs';
+// Prints: 8
+console.log(addTwo(4));
+Copied!
+require()	The built-in NodeJS method require() is used to incorporate external modules that are included in different files. The require() statement essentially reads and executes a JavaScript file before returning the export object.	
+
+module.exports = 'Hello Programmers';
+let msg = require('./messages.js');
+console.log(msg);
+
+
+Developers rely on third-party packages to extend Node.js.  
+
+You can use the npm application to manage Node.js packages in your Node.js framework installation. 
+
+The MVC architecture style divides a back-end application into three parts: the model, the view, and the controller.  
+
+REST API frameworks use HTTP methods to communicate with each other. 
+
+Express abstracts low-level details.  
+
+Routing can be handled at the application level or at the router level.  
+
+Five types of middleware are application level, router level, error handling, built-in middleware, and third party.  
+
+Template rendering is the ability of the server to fill in dynamic content.  
+
+The npm jsonwebtoken package should be required in an Express application to authenticate a user.
+
+
+Package/Method	Description	Code Example
+Dependencies in `package.json`	A dependency of express version between 4.0 to 5.0 will be declared as:	
+
+"dependencies":{"express":"4.x"}
+Copied!
+new express()	Creates an express object which acts as a server
+application.	
+
+const express = require(“express”);
+const app = new express();
+Copied!
+express.listen()	The listen method is invoked on the express object with the port number on which the server listens. The function is executed when the server starts listening.	
+
+app.listen(3333, () => {
+  console.log(“Listening at
+  http://localhost:3333)
+})
+Copied!
+express.get();	This method is meant to serve the retrieve requests to the server. The get() method is to be implemented with two parameters; the first parameter defining the end-point and the second parameter is a function taking the request-handler and response-handler.	
+
+// handles GET queries to end point /user/about/id.
+app.get(“user/about/:id”, (req,res)=>{
+  res.send(“Response about user ”
+  +req.params.id)
+})
+
+Copied!
+express.post();	This method is meant to serve the create requests to the server. The post() method is to be implemented with two parameters: the first parameter defines the end-point and the second parameter is a function taking the request-handler and response-handler.	
+
+// handles POST queries to the same end point.
+app.post(“user/about/:id”, (req,res)=>{
+  res.send(“Response about user ”
+  +req.params.id)
+})
+Copied!
+express.use()	This method takes middleware as a parameter. Middleware acts as a gatekeeper in the same order that it is used, before the request reaches the get() and post() handlers. The order in which the middleware is chained depends on the order in which the .use() method is used to bind them. The middleware myLogger() function takes three parameters, which are request, response, and next. You can define a method that takes these three parameters and then bind it with express.use() or router.use(). Here, you are creating middleware named myLogger and making the application use it.  The output rendered includes the time the request is received.	
+
+const express = require("express");
+const app = new express();
+function myLogger(req, res, next){
+  req.timeReceived = Date();
+  next();
+}
+app.get(“/”, (req, res)=>{
+  res.send(“Request received at
+  "+req.timeReceived+“ is a success!")
+})
+Copied!
+express.Router()	Router-level middleware is not bound to the application. Instead, it is bound to an instance of express.Router(). You can use specific middleware for a specific route instead of having all requests going through the same middleware. Here, the route is /user and you want the request to go through the user router. Define the router, define the middleware function that the router will use and what happens next, and then you bind the application route to the router.	
+
+const express = require(“express”);
+const app = new express();
+let userRouter = expess.Router();
+let itemRouter = express.Router();
+userRouter.use(function (req, res, next){
+  console.log(“User quert time:”, Date());
+  next();
+})
+userRouter.get(“/:id”, function (req, res,
+  next) {
+  res.send(“User ”+req.params.id+ “ last
+  successful login ”+Date())
+})
+app.listen(3333, () => {
+  console.log(“Listening at http://localhost:3333)
+})
+Copied!
+express.static()	This is an example of static middleware that is used to render static HTML pages and the images from the server side. At the application level, the static files can be rendered from the cad220_staticfiles directory. Notice that the URL has only the server address and the port number followed by the filename.	
+
+const express = require(“express”);
+const app = new express();
+app.use(express.static("cad220_staticfiles"))
+app.listen(3333, () => {
+  console.log("Listening at  http://localhost:3333")
+})
+Copied!
+jsonwebtoken.sign()	Used for signing-in based on a generated JWT (JSON Web token)	
+
+if (uname === "user" && pwd === "password") {
+    return res.json({
+      token: jsonwebtoken.sign({ user: "user" }, JWT_SECRET),
+    });
+  }
+Copied!
+jsonwebtoken.verify()	Verifies a JWT by passing the token value & the JWT secret as arguments.	
+
+const verificationStatus =   jsonwebtoken.verify(tokenValue, "aVeryVerySecretString");
+Copied!
+Project folder strucure	A fairly established project structure for API's built using Express.js is:	
+
+test-project/
+   node_modules/
+   config/
+     db.js           //Database connection and configuration
+     credentials.js  //Passwords/API keys for external services used by your app
+   models/            //For mongoose schemas
+      items.js
+      prices.js
+   routes/           //All routes for different entities in different files
+      items.js
+      prices.js
+   app.js
+   routes.js         //Require all routes in this and then require this file in
+   package.json
+
+Term	Definition
+Access Token	A small piece of code that contains information about the user, their permissions, groups, and expirations that get passed from a server to the client.
+API Endpoint	The touchpoint where the API connects to the application it is communicating with.
+Application-Level Middleware	Acts as a gatekeeper and is bound to the application. No request to the application server can go past it. 
+Authentication	The process of confirming a user’s identity using credentials by validating who they claim to be. Authentication assures an application’s security by guaranteeing that only those with valid credentials can access the system. 
+Authorization	In token-based authentication, it is the process that gets executed when a web application wants to access a protected resource. A user authenticates against an authorization server. 
+Built-In Middleware	Can be bound to either the entire application or to specific routers. Useful for activities such as rendering HTML pages from the server, parsing JSON input from the front end, and parsing cookies. 
+Controller	The layer in an MVC application regulates the flow of the data. It is responsible for processing the data supplied to it by the user and sends that data to the model for manipulation or storage. 
+Error-Handling Middleware	Can be bound to either the entire application or to specific routers. Error-handling middleware always takes four  arguments: error, request, response, and the next function that it needs to be chained to. Even if you don’t use the next parameter, you still define it in the method signature. 
+Express.js	A web application framework based on the Node.js runtime environment, however, Express abstracts low-level details. 
+Framework	A framework is a skeleton on which an application is built for a specific environment. The framework is the fundamental structure that supports the application. 
+HTTP Headers	Additional information about and contained in an HTTP response or request. 
+HTTP Request	A method called by a client and sent to a server requesting access to a resource on the server. 
+HTTP Response	A method called by a server and sent to a client in response to an HTTP request. 
+ID Token	An artifact that proves that a user has been authenticated and contains information about authorized API routes. 
+JSON Payload	Data that is transferred in JSON format between the client and server in the header of an HTTP method. 
+JWT	A JSON Web token. An internet standard for creating encrypted payload data in JSON format. 
+Middleware	Includes functions that have access to the request and response objects and the next() function. 
+Model	The layer in an MVC application responsible for managing the data of the application. It interacts with the database and handles the data logic. 
+MVC	Short for “Model-View-Controller”. It is an architectural pattern that divides an application into three components: model, view, and controller. 
+Node Framework	A framework that works in conjunction with Node.js. A framework is a skeleton on which an application is built for a specific environment. The framework is the fundamental structure that supports the application. 
+npm	An application that manages Node.js packages in your Node.js framework installation. 
+Passwordless Authentication	A type of authentication that uses public/private key pairs to encrypt and decrypt data passed between client and server without the need for a password. 
+Private Key	In cryptography, it is a key that is known only to a specific client used to decrypt messages. Used in conjunction with a public key. 
+Public Key	In cryptography, it is a key that can be used by anyone to encrypt messages for a specific client. Used in conjunction with a private key. 
+REST	“Representational state transfer” is a set of guidelines for creating stateless client/server interfaces using HTTP methods. 
+REST API	An API used for communicating between clients and servers that conforms to REST architecture principles. 
+Route	The code that associates an HTTP request method and a URL. 
+Router-Level Middleware	Bound to a router and not bound to an application. You can use specific middleware for a specific route instead of having all requests go through the same middleware. Then you bind the application routes to each router. 
+Session-based Authentication	A type of authentication where a user provides login credentials that are verified against stored credentials in a database on a server. A session ID is provided to the client and stored in the browser as a cookie. 
+Statelessness	Implies that each HTTP request happens in isolation in relation to other requests. The state of the client is not stored on the server; the state is passed to the server by the client for each request. 
+Template Rendering	The ability of the server to fill in dynamic content in an HTML template. 
+Token	Contains three parts, the header, the payload, and the signature. The header contains information about the type of token and the algorithm used to create it. The payload contains user attributes, called claims, such as permissions, groups, and expirations. The signature verifies the token’s integrity, meaning that the token hasn’t changed during transit. 
+Token-based Authentication	A type of authentication that uses access tokens, often JWTs, which get passed between server and client with the data that is passed between the two. 
+TypeScript	A language that builds on top of JavaScript and provides type safety which assists with the development of large-scale applications by reducing the complexity of component development in JavaScript. 
+View	The layer in an MVC application responsible for rendering the presentation of the data that is passed to it by the model. 
+xml2js	Node.js package to parse a string of XML elements into a JavaScript object. 
